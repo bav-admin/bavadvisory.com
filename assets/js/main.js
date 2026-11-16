@@ -93,28 +93,6 @@
     });
   }
 
-  /* ---------- Visual titik untuk Adat dan Iklim (dekoratif) ---------- */
-  var atlas = document.getElementById('atlas-dots');
-  if (atlas) {
-    var ns = 'http://www.w3.org/2000/svg';
-    var seed = 7;
-    function rnd() { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
-    /* Pita kepulauan yang menurun dari barat laut ke tenggara */
-    for (var row = 0; row < 12; row++) {
-      for (var col = 0; col < 15; col++) {
-        var x = 18 + col * 23, y = 20 + row * 24;
-        var band = Math.abs(row - (2 + col * 0.45));
-        if (band > 3.2 || rnd() < 0.18) continue;
-        var c = document.createElementNS(ns, 'circle');
-        var on = rnd() < 0.16;
-        c.setAttribute('cx', x); c.setAttribute('cy', y);
-        c.setAttribute('r', on ? 7 : 3);
-        if (on) c.setAttribute('class', 'on');
-        atlas.appendChild(c);
-      }
-    }
-  }
-
   var tahun = document.getElementById('tahun');
   if (tahun) tahun.textContent = new Date().getFullYear();
 })();
